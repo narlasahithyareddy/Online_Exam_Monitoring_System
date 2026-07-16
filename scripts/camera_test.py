@@ -1,9 +1,8 @@
 import cv2
-import os
+from pathlib import Path
 
-# Create photos folder if it doesn't exist
-if not os.path.exists("photos"):
-    os.makedirs("photos")
+photos_dir = Path(__file__).resolve().parent.parent / "photos"
+photos_dir.mkdir(parents=True, exist_ok=True)
 
 camera = cv2.VideoCapture(0)
 
@@ -21,8 +20,8 @@ while True:
 
     # Press 'c' to capture photo
     if key == ord('c'):
-        photo_path = "photos/candidate.jpg"
-        cv2.imwrite(photo_path, frame)
+        photo_path = photos_dir / "candidate.jpg"
+        cv2.imwrite(str(photo_path), frame)
         print("Photo Saved Successfully!")
         print("Photo Path:", photo_path)
         break

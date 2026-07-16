@@ -1,19 +1,23 @@
 # face_detection.py
 import cv2
-import os
 import sqlite3
 from datetime import datetime
+from pathlib import Path
+
+script_dir = Path(__file__).resolve().parent
+base_dir = script_dir.parent
 
 # Load Haar Cascade
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+cascade_path = base_dir / "haarcascade" / "haarcascade_frontalface_default.xml"
+face_cascade = cv2.CascadeClassifier(str(cascade_path))
 
 if face_cascade.empty():
     print("Error: Haar Cascade XML file not loaded!")
     exit()
 
 # Create photos folder if needed
-photos_dir = os.path.join(os.path.dirname(__file__), "photos")
-os.makedirs(photos_dir, exist_ok=True)
+photos_dir = base_dir / "photos"
+photos_dir.mkdir(parents=True, exist_ok=True)
 
 candidate_id = 101
 face_missing = False
@@ -86,7 +90,8 @@ while True:
 
         if not face_missing:
 
-            connection = sqlite3.connect("database/exam.db")
+            db_path = base_dir / "database" / "exam.db"
+            connection = sqlite3.connect(str(db_path))
             cursor = connection.cursor()
 
             cursor.execute("""
@@ -118,10 +123,10 @@ while True:
 
     cv2.putText(
         frame,
-        f"Time : {current_time}",
+        f"Time: {current_time}",
         (20, 80),
         cv2.FONT_HERSHEY_SIMPLEX,
-        0.7,
+        0.8,
         (255, 255, 255),
         2
     )
@@ -129,20 +134,10 @@ while True:
     cv2.putText(
         frame,
         f"Absence Duration: {absence_duration} sec",
-        (20, 110),
+        (20, 120),
         cv2.FONT_HERSHEY_SIMPLEX,
         0.8,
         (255, 255, 0),
-        2
-    )
-
-    cv2.putText(
-        frame,
-        f"Time: {current_time}",
-        (20, 140),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.8,
-        (255, 255, 255),
         2
     )
 
@@ -153,10 +148,10 @@ while True:
     if key == ord('q'):
         break
     elif key == ord('c'):
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"capture_{timestamp}.png"
-        filepath = os.path.join(photos_dir, filename)
-        cv2.imwrite(filepath, frame)
+        filepath = photos_dir / filename
+        cv2.imwrite(str(filepath), frame)
         print(f"Saved capture: {filepath}")
 
 camera.release()
