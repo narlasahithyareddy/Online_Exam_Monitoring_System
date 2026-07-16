@@ -1,33 +1,193 @@
-# Online Exam Monitoring & Integrity Analytics Platform
+# 🎓 Online Exam Monitoring & Integrity Analytics Platform
 
-This project implements an online exam monitoring and integrity analytics system.
+An AI-powered Online Exam Monitoring System developed as part of an internship project. The platform helps monitor candidates during online examinations using computer vision and event logging to improve exam integrity.
 
-## Project Workflow Flowchart
+---
 
-```mermaid
-graph TD
-    A[Candidate Registration] --> B[Candidate Login]
-    B --> C[Face Verification <br/> OpenCV]
-    C --> D[Exam Instructions]
-    D --> E[Start Exam]
-    E --> F[Face Monitoring]
-    F --> G[Browser Activity & <br/> Tab Monitoring]
-    G --> H[Suspicious Event <br/> Detection]
-    H --> I[Integrity Score]
-    I --> J[AI Integrity Report]
-    J --> K[Submit Exam]
-    K --> L[Dashboard & Reports]
+## 🚀 Features
 
-    style A fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#fff
-    style B fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
-    style C fill:#00BCD4,stroke:#0097A7,stroke-width:2px,color:#fff
-    style D fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
-    style E fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
-    style F fill:#E91E63,stroke:#C2185B,stroke-width:2px,color:#fff
-    style G fill:#E91E63,stroke:#C2185B,stroke-width:2px,color:#fff
-    style H fill:#f44336,stroke:#d32f2f,stroke-width:2px,color:#fff
-    style I fill:#FFEB3B,stroke:#FBC02D,stroke-width:2px,color:#000
-    style J fill:#3F51B5,stroke:#303F9F,stroke-width:2px,color:#fff
-    style K fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#fff
-    style L fill:#9E9E9E,stroke:#616161,stroke-width:2px,color:#fff
+### 👤 Candidate Management
+- Candidate Registration
+- Candidate Login
+- Dashboard
+- SQLite Database Integration
+
+### 📷 OpenCV Integration
+- Access System Webcam
+- Live Video Feed
+- Capture Candidate Photo
+- Save Photos Automatically
+
+### 😀 Face Detection
+- Haar Cascade Face Detection
+- Real-Time Face Monitoring
+- Face Detected / Face Not Detected Status
+- Bounding Box Around Face
+
+### ⏱️ Monitoring Features
+- Continuous Face Presence Monitoring
+- Face Absence Duration Tracking
+- Current Time Display
+- Real-Time Monitoring Information
+
+### 📋 Event Logging
+Whenever a candidate's face is not detected, the system automatically logs:
+
+- Candidate ID
+- Event Type
+- Timestamp
+- Remarks
+
+All events are stored in an SQLite database.
+
+### 📝 Session Management
+- Start Exam
+- Pause Exam
+- Resume Exam
+- End Exam
+
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- Flask
+- SQLite
+- OpenCV
+- Haar Cascade Classifier
+- HTML
+- CSS
+- JavaScript
+
+---
+
+## 📂 Project Structure
+
 ```
+Online-Exam-Monitoring-Integrity-Analytics-Platform
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── LICENSE
+│
+├── database/
+│   ├── exam.db
+│   └── candidates.csv
+│
+├── models/
+│   ├── database.py
+│   ├── candidate.py
+│   └── faker_data.py
+│
+├── modules/
+│   ├── authentication.py
+│   ├── registration.py
+│   ├── monitoring.py
+│   ├── report.py
+│   └── scoring.py
+│
+├── scripts/
+│   ├── face_detection.py
+│   ├── camera_test.py
+│   ├── check_database.py
+│   ├── export_exam_db.py
+│   └── exam.py
+│
+├── static/
+├── templates/
+├── photos/
+└── haarcascade/
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Move into the project directory:
+
+```bash
+cd Online-Exam-Monitoring-Integrity-Analytics-Platform
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Run the Project
+
+Start the Flask application:
+
+```bash
+python app.py
+```
+
+Run Face Detection:
+
+```bash
+python scripts/face_detection.py
+```
+
+Run Camera Test:
+
+```bash
+python scripts/camera_test.py
+```
+
+---
+
+## 📸 Current Modules
+
+- ✅ Candidate Registration
+- ✅ Candidate Login
+- ✅ Dashboard
+- ✅ Photo Capture
+- ✅ Face Detection
+- ✅ Continuous Face Monitoring
+- ✅ Face Absence Tracking
+- ✅ Event Logging
+- ✅ Session Management
+- ✅ SQLite Database
+
+---
+
+## 📈 Future Improvements
+
+- Face Recognition
+- Multiple Face Detection Alerts
+- Browser Tab Monitoring
+- Eye Gaze Tracking
+- Head Pose Detection
+- AI-Based Proctoring
+- PDF Report Generation
+- Email Notifications
+- Admin Dashboard
+- Exam Analytics
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 TEAM
+
+**Raghuram Chimata**
+
+GitHub: https://github.com/chimataraghuram
+
+LinkedIn: https://linkedin.com/in/chimataraghuram
+
+Portfolio: https://chimataraghuram.vercel.app
