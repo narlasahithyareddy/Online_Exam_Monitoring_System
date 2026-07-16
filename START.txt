@@ -1,0 +1,68 @@
+START
+  │
+  ▼
+Candidate Registration
+  │
+  ▼
+Capture Candidate Photo (OpenCV)
+  │
+  ▼
+Store Candidate Details in SQLite Database
+  │
+  ▼
+Candidate Login
+  │
+  ▼
+Identity Verification (Face Verification)
+  │
+  ▼
+Display Exam Instructions
+  │
+  ▼
+Start Examination
+  │
+  ▼
+Live Exam Monitoring
+  ├── Face Presence Detection
+  ├── Multiple Face Detection
+  ├── Browser Focus Monitoring
+  ├── Tab Switch Detection
+  ├── Mobile Phone Detection
+  ├── Face Absent Detection
+  └── Suspicious Activity Detection
+  │
+  ▼
+Log All Events with Timestamps
+  │
+  ▼
+Rule-Based Suspicious Event Detection
+  │
+  ▼
+Calculate Candidate Integrity Score
+  │
+  ▼
+Generate AI Integrity Summary Report (LangChain)
+  │
+  ▼
+Store Logs, Reports & Evidence in SQLite Database
+  │
+  ▼
+Submit Examination
+  │
+  ▼
+Generate Final Examination Report
+  │
+  ▼
+Display Dashboard & Analytics
+  ├── Integrity Score
+  ├── Session Summary
+  ├── Event Heatmaps
+  ├── Candidate Risk Level
+  ├── Behaviour Clustering
+  └── AI Report
+  │
+  ▼
+Export Reports (JSON / CSV)
+  │
+  ▼
+END
